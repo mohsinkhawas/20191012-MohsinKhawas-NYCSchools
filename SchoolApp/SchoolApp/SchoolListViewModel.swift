@@ -9,11 +9,8 @@
 import Foundation
 
 protocol SchoolListViewControllerDelegate: class {
-    func fetchSchoolListSuccess()
-    func fetchSchoolListFailed(_ error: Error)
-    
-    func fetchSATSuccess()
-    func fetchSATFailed(_ error: Error)
+    func fetchSchoolListSuccess(_ failedError: Error?)
+    func fetchSATSuccess(_ failedError: Error?)
 }
 
 class SchoolListViewModel: NSObject {
@@ -43,13 +40,13 @@ class SchoolListViewModel: NSObject {
                 let schoolList = try JSONDecoder().decode(Array<School>.self, from: resultData as! Data)
                 
                 self.schools = schoolList
-                self.delegate?.fetchSchoolListSuccess()
                 self.fetchSATScores()
                 
+                self.delegate?.fetchSchoolListSuccess(fetchError)
+                
                 }catch{
-                    self.delegate?.fetchSchoolListFailed(error)
+                    self.delegate?.fetchSchoolListSuccess(error)
                 }
-                self.delegate?.fetchSchoolListFailed(fetchError!)
             }
     }
     
@@ -57,14 +54,30 @@ class SchoolListViewModel: NSObject {
         networkManager.fetchData(urlString: APIURLConstants.fetchSATScores) { (resultData, fetchError)  in
             do{
                 let schoolSATScores = try JSONDecoder().decode(Array<SchoolSATScores>.self, from: resultData as! Data)
-                print(schoolSATScores)
-                
-                self.delegate?.fetchSATSuccess()
+                self.mapSATScoresToSchools(schoolSATScores)
+                self.delegate?.fetchSATSuccess(fetchError)
+
             }catch{
-                print(error.localizedDescription)
-                self.delegate?.fetchSATFailed(error)
+                self.delegate?.fetchSATSuccess(error)
             }
-            self.delegate?.fetchSATFailed(fetchError!)
+        }
+    }
+    
+    func mapSATScoresToSchools(_ satScrores: [SchoolSATScores]){
+        
+        for schoolSATSchore in satScrores{
+            
+            if let dbn = schoolSATSchore.dbn{
+                var matchedSchool = self.schools.first(where: { (nycHighSchool) -> Bool in
+                    return nycHighSchool.dbn == dbn
+                })
+                
+                guard matchedSchool != nil else{
+                    continue
+                }
+                
+                matchedSchool?.satScores = schoolSATSchore
+            }
         }
     }
 }

@@ -75,9 +75,9 @@ extension SchoolListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SchoolTableViewCell.identifier) as! SchoolTableViewCell
         
-//        cell.repository = viewModel!.data(forRowAt: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SchoolTableViewCell.identifier) as! SchoolTableViewCell
+            cell.school = viewModel!.data(forRowAt: indexPath)
         
         return cell
     }
@@ -85,22 +85,22 @@ extension SchoolListViewController: UITableViewDataSource {
 
 
 extension SchoolListViewController: SchoolListViewControllerDelegate {
-    
-    
-    func fetchSchoolListSuccess(){
-        DispatchQueue.main.async {
-            //            self.tableView.reloadData()
-            //            self.stopAnimation()
+
+    func fetchSchoolListSuccess(_ failedError: Error?){
+        
+        if let error = failedError {
+            self.displayAlert(error)
+        }else{
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.stopAnimation()
+            }
         }
     }
-    func fetchSchoolListFailed(_ error: Error){
-        self.displayAlert(error)
-    }
     
-    func fetchSATSuccess(){
-        
-    }
-    func fetchSATFailed(_ error: Error){
-        self.displayAlert(error)
+    func fetchSATSuccess(_ failedError: Error?){
+        if let error = failedError {
+            self.displayAlert(error)
+        }
     }
 }

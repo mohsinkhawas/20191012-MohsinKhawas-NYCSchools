@@ -13,11 +13,13 @@ class SchoolTableViewCell: UITableViewCell {
     static let identifier = "SchoolTableViewCell"
     
     @IBOutlet weak var schoolNameLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+
     
     var school: School! {
         didSet {
-//            schoolNameLabel.text = school.school_name
-            
+            schoolNameLabel.text = school.school_name
+            cityLabel.text = school.city
         }
     }
 }

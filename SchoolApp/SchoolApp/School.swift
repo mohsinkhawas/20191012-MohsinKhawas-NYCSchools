@@ -71,7 +71,7 @@ struct School: Codable {
     let nta: String?
     let borough: String?
     
-    let satScores: SchoolSATScores? //sets the SAT Scores object
+    var satScores: SchoolSATScores? //sets the SAT Scores object
 }
 
 struct SchoolSATScores: Codable {
