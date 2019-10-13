@@ -17,6 +17,8 @@
 		33FFF40E2352FD6000E33E60 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF40D2352FD6000E33E60 /* School.swift */; };
 		33FFF4102352FEB600E33E60 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF40F2352FEB600E33E60 /* SchoolTableViewCell.swift */; };
 		33FFF4122352FF1600E33E60 /* SchoolListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4112352FF1600E33E60 /* SchoolListViewModel.swift */; };
+		33FFF4152353D85F00E33E60 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4142353D85F00E33E60 /* Utilities.m */; };
+		33FFF4182353E3DA00E33E60 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,10 @@
 		33FFF40D2352FD6000E33E60 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		33FFF40F2352FEB600E33E60 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
 		33FFF4112352FF1600E33E60 /* SchoolListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListViewModel.swift; sourceTree = "<group>"; };
+		33FFF4132353D85E00E33E60 /* SchoolApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SchoolApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		33FFF4142353D85F00E33E60 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		33FFF4162353D87600E33E60 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,9 @@
 			children = (
 				33FFF3EB2352D0C100E33E60 /* AppDelegate.swift */,
 				33FFF3ED2352D0C100E33E60 /* SchoolListViewController.swift */,
+				33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */,
+				33FFF4162353D87600E33E60 /* Utilities.h */,
+				33FFF4142353D85F00E33E60 /* Utilities.m */,
 				33FFF4112352FF1600E33E60 /* SchoolListViewModel.swift */,
 				33FFF40F2352FEB600E33E60 /* SchoolTableViewCell.swift */,
 				33FFF40B2352FCB900E33E60 /* NetworkManager.swift */,
@@ -95,6 +104,7 @@
 				33FFF3F22352D0C200E33E60 /* Assets.xcassets */,
 				33FFF3F42352D0C200E33E60 /* LaunchScreen.storyboard */,
 				33FFF3F72352D0C200E33E60 /* Info.plist */,
+				33FFF4132353D85E00E33E60 /* SchoolApp-Bridging-Header.h */,
 			);
 			path = SchoolApp;
 			sourceTree = "<group>";
@@ -158,6 +168,7 @@
 				TargetAttributes = {
 					33FFF3E72352D0C100E33E60 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					33FFF3FB2352D0C200E33E60 = {
 						CreatedOnToolsVersion = 10.3;
@@ -211,9 +222,11 @@
 			files = (
 				33FFF4122352FF1600E33E60 /* SchoolListViewModel.swift in Sources */,
 				33FFF4102352FEB600E33E60 /* SchoolTableViewCell.swift in Sources */,
+				33FFF4182353E3DA00E33E60 /* SchoolDetailViewController.swift in Sources */,
 				33FFF40C2352FCB900E33E60 /* NetworkManager.swift in Sources */,
 				33FFF3EE2352D0C100E33E60 /* SchoolListViewController.swift in Sources */,
 				33FFF3EC2352D0C100E33E60 /* AppDelegate.swift in Sources */,
+				33FFF4152353D85F00E33E60 /* Utilities.m in Sources */,
 				33FFF40E2352FD6000E33E60 /* School.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SchoolApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -384,6 +398,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.schoolapp.SchoolApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SchoolApp/SchoolApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -393,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SchoolApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -401,6 +418,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.schoolapp.SchoolApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SchoolApp/SchoolApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

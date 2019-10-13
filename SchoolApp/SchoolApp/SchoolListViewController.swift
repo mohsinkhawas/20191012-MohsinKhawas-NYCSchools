@@ -83,6 +83,13 @@ extension SchoolListViewController: UITableViewDataSource {
     }
 }
 
+extension SchoolListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let place = placesArray[indexPath.row]
+        self.performSegue(withIdentifier: "mainToDetailSegue", sender: self)
+    }
+}
 
 extension SchoolListViewController: SchoolListViewControllerDelegate {
 

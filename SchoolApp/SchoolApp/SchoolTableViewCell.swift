@@ -14,12 +14,14 @@ class SchoolTableViewCell: UITableViewCell {
     
     @IBOutlet weak var schoolNameLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var navigateButton: UIButton!
 
-    
     var school: School! {
         didSet {
             schoolNameLabel.text = school.school_name
-            cityLabel.text = school.city
+            if let city = school.city, let code = school.state_code, let zip = school.zip{
+                cityLabel.text = "\(city), \(code), \(zip)"
+            }
         }
     }
 }

@@ -29,21 +29,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="School Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl4-2S-dMI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl4-2S-dMI">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="49" id="xUq-28-DCh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="School Name" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ3-1H-o9Q">
-                                                    <rect key="frame" x="20" y="40" width="166" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, Zip and Code." textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ3-1H-o9Q">
+                                                    <rect key="frame" x="20" y="40" width="147" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.029946981315737697" green="0.14912849228587177" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijD-VA-6Ap">
+                                                    <rect key="frame" x="328" y="64" width="66" height="30"/>
+                                                    <state key="normal" title="Navigate"/>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ijD-VA-6Ap" firstAttribute="top" secondItem="yl4-2S-dMI" secondAttribute="bottom" constant="15" id="JWa-3V-xuJ"/>
+                                                <constraint firstItem="yl4-2S-dMI" firstAttribute="leading" secondItem="8hl-qO-Pgg" secondAttribute="leading" constant="20" id="P0H-fD-l0u"/>
+                                                <constraint firstItem="yl4-2S-dMI" firstAttribute="trailing" secondItem="ijD-VA-6Ap" secondAttribute="trailing" id="QzY-Pk-QVh"/>
+                                                <constraint firstAttribute="trailing" secondItem="yl4-2S-dMI" secondAttribute="trailing" constant="20" id="V3k-54-dyX"/>
+                                                <constraint firstItem="qJ3-1H-o9Q" firstAttribute="top" secondItem="yl4-2S-dMI" secondAttribute="bottom" constant="-9" id="aEw-st-OLQ"/>
+                                                <constraint firstItem="yl4-2S-dMI" firstAttribute="leading" secondItem="qJ3-1H-o9Q" secondAttribute="leading" id="qiM-tY-0aa"/>
+                                                <constraint firstItem="yl4-2S-dMI" firstAttribute="top" secondItem="8hl-qO-Pgg" secondAttribute="top" id="vXU-4e-WGR"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityLabel" destination="qJ3-1H-o9Q" id="xN1-KK-MOP"/>
@@ -69,11 +83,12 @@
                     <navigationItem key="navigationItem" id="BM4-83-gvS"/>
                     <connections>
                         <outlet property="tableView" destination="asf-zv-Y58" id="4HX-EA-J0T"/>
+                        <segue destination="mzu-0o-QXr" kind="show" identifier="mainToDetailSegue" id="ngo-pU-D1E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.91304347826099" y="91.741071428571431"/>
+            <point key="canvasLocation" x="886" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eFi-Wg-ZeN">
@@ -93,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="67" y="119"/>
         </scene>
-        <!--View Controller-->
+        <!--School Detail View Controller-->
         <scene sceneID="8af-No-X6K">
             <objects>
-                <viewController id="mzu-0o-QXr" sceneMemberID="viewController">
+                <viewController id="mzu-0o-QXr" customClass="SchoolDetailViewController" customModule="SchoolApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NKF-oD-WUS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQ1-Ft-Ug9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1726" y="92"/>
+            <point key="canvasLocation" x="1725" y="119"/>
         </scene>
     </scenes>
 </document>
