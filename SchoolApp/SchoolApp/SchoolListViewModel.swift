@@ -66,7 +66,6 @@ class SchoolListViewModel: NSObject {
     func mapSATScoresToSchools(_ satScrores: [SchoolSATScores]){
         
         for schoolSATSchore in satScrores{
-            
             if let dbn = schoolSATSchore.dbn{
                 var matchedSchool = self.schools.first(where: { (nycHighSchool) -> Bool in
                     return nycHighSchool.dbn == dbn

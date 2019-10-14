@@ -67,6 +67,15 @@ class SchoolListViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let school = sender as? School {
+            let detailsView = segue.destination as? SchoolDetailViewController
+            detailsView?.view.tag = 0   //Setting the tag as example so that view loads it hierarchy.
+            detailsView?.loadDetailView(school)
+        }
+    }
 }
 
 extension SchoolListViewController: UITableViewDataSource {
@@ -86,8 +95,8 @@ extension SchoolListViewController: UITableViewDataSource {
 extension SchoolListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let place = placesArray[indexPath.row]
-        self.performSegue(withIdentifier: "mainToDetailSegue", sender: self)
+        let school = viewModel!.data(forRowAt: indexPath)
+        self.performSegue(withIdentifier: "mainToDetailSegue", sender: school)
     }
 }
 
