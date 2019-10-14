@@ -15,6 +15,7 @@ protocol SchoolListViewControllerDelegate: class {
 
 class SchoolListViewModel: NSObject {
     private var schools: [School] = []
+
     let networkManager = NetworkManager()
     
     weak var delegate: SchoolListViewControllerDelegate?
@@ -36,38 +37,48 @@ class SchoolListViewModel: NSObject {
     
     func fetchSchools(){
         networkManager.fetchData(urlString: APIURLConstants.fetchSchools) { (resultData, fetchError) in
-            do{
-                let schoolList = try JSONDecoder().decode(Array<School>.self, from: resultData as! Data)
-                
-                self.schools = schoolList
-                self.fetchSATScores()
-                
-                self.delegate?.fetchSchoolListSuccess(fetchError)
-                
+            
+            if let error = fetchError{
+                self.delegate?.fetchSchoolListSuccess(error)
+            }else {
+                do{
+                    let schoolList = try JSONDecoder().decode(Array<School>.self, from: resultData as! Data)
+                    
+                    self.schools = schoolList
+                    self.fetchSATScores()
                 }catch{
                     self.delegate?.fetchSchoolListSuccess(error)
                 }
             }
+        }
     }
     
     func fetchSATScores(){
         networkManager.fetchData(urlString: APIURLConstants.fetchSATScores) { (resultData, fetchError)  in
-            do{
-                let schoolSATScores = try JSONDecoder().decode(Array<SchoolSATScores>.self, from: resultData as! Data)
-                self.mapSATScoresToSchools(schoolSATScores)
-                self.delegate?.fetchSATSuccess(fetchError)
+            
+            if let error = fetchError{
+                self.delegate?.fetchSchoolListSuccess(error)
+            }else{
+                do{
+                    let schoolSATScores = try JSONDecoder().decode(Array<SchoolSATScores>.self, from: resultData as! Data)
+                    self.mapSATScoresToSchools(schoolSATScores)
+                self.delegate?.fetchSchoolListSuccess(fetchError)
+                    self.delegate?.fetchSATSuccess(fetchError)
 
-            }catch{
-                self.delegate?.fetchSATSuccess(error)
+                }catch{
+                    self.delegate?.fetchSATSuccess(error)
+                }
             }
         }
     }
     
     func mapSATScoresToSchools(_ satScrores: [SchoolSATScores]){
+        let previous = self.schools
+        self.schools.removeAll()
         
         for schoolSATSchore in satScrores{
             if let dbn = schoolSATSchore.dbn{
-                var matchedSchool = self.schools.first(where: { (nycHighSchool) -> Bool in
+                var matchedSchool = previous.first(where: { (nycHighSchool) -> Bool in
                     return nycHighSchool.dbn == dbn
                 })
                 
@@ -76,6 +87,7 @@ class SchoolListViewModel: NSObject {
                 }
                 
                 matchedSchool?.satScores = schoolSATSchore
+                self.schools.append(matchedSchool!)
             }
         }
     }

@@ -61,6 +61,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityLabel" destination="qJ3-1H-o9Q" id="xN1-KK-MOP"/>
+                                            <outlet property="navigateButton" destination="ijD-VA-6Ap" id="USh-Qj-XrP"/>
                                             <outlet property="schoolNameLabel" destination="yl4-2S-dMI" id="6lf-Ok-oVI"/>
                                         </connections>
                                     </tableViewCell>

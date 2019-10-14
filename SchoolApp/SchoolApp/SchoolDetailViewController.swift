@@ -27,13 +27,21 @@ class SchoolDetailViewController: UIViewController {
     }
     
     func loadDetailView(_ school: School){
-        
-        print("Selected School \(school)")
-        
+                
         schoolNameLabel.text = school.school_name
-        readingSATScoreLabel.text = school.satScores?.sat_critical_reading_avg_score
-        writingLabel.text = school.satScores?.sat_writing_avg_score
-        mathSATScoreLabel.text = school.satScores?.sat_math_avg_score
+        
+        if let readingScore = school.satScores?.sat_critical_reading_avg_score{
+            readingSATScoreLabel.text = "SAT Average Reading Score - " + readingScore
+        }
+        
+        if let writingScore = school.satScores?.sat_writing_avg_score{
+            writingLabel.text = "SAT Average Writing Score - " + writingScore
+        }
+        
+        if let mathsScore = school.satScores?.sat_math_avg_score{
+            mathSATScoreLabel.text = "SAT Average Maths Score - " + mathsScore
+        }
+        
         
         addressLineLabel.text = school.primary_address_line_1
         
@@ -41,6 +49,7 @@ class SchoolDetailViewController: UIViewController {
             cityLabel.text = "\(city), \(code), \(zip)"
         }
         websiteLabel.text = school.website
+        
         phoneNumberLabel.text = school.phone_number
         emailLabel.text = school.school_email
         faxNumberLabel.text = school.fax_number

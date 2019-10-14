@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SchoolListViewController: UIViewController {
 
@@ -76,6 +77,36 @@ class SchoolListViewController: UIViewController {
             detailsView?.loadDetailView(school)
         }
     }
+    
+    @objc func navigateToAddress(_ sender: UIButton){
+        
+        let indexPath = IndexPath.init(row: sender.tag, section: 0)
+        let selectedSchool = viewModel?.data(forRowAt: indexPath)
+        
+        if let highSchoolCoordinate = self.getCoordinates(selectedSchool?.location){
+            let coordinate = CLLocationCoordinate2DMake(highSchoolCoordinate.latitude, highSchoolCoordinate.longitude)
+            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+            
+            if let name = selectedSchool?.school_name{
+                mapItem.name = name
+            }
+            
+            mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        }
+    }
+    
+    func getCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
+        if let schoolAddress = location{
+            let coordinateString = schoolAddress.slice(from: "(", to: ")")
+            let coordinates = coordinateString?.components(separatedBy: ",")
+            if let coordinateArray = coordinates{
+                let latitude = (coordinateArray[0] as NSString).doubleValue
+                let longitude = (coordinateArray[1] as NSString).doubleValue
+                return CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+            }
+        }
+        return nil
+    }
 }
 
 extension SchoolListViewController: UITableViewDataSource {
@@ -87,6 +118,10 @@ extension SchoolListViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SchoolTableViewCell.identifier) as! SchoolTableViewCell
             cell.school = viewModel!.data(forRowAt: indexPath)
+        
+        //Add button action
+        cell.navigateButton.tag = indexPath.row
+        cell.navigateButton.addTarget(self, action: #selector(self.navigateToAddress(_:)), for: .touchUpInside)
         
         return cell
     }
@@ -117,6 +152,16 @@ extension SchoolListViewController: SchoolListViewControllerDelegate {
     func fetchSATSuccess(_ failedError: Error?){
         if let error = failedError {
             self.displayAlert(error)
+        }
+    }
+}
+
+extension String {
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
         }
     }
 }
