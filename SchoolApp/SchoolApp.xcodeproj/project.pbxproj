@@ -19,6 +19,7 @@
 		33FFF4152353D85F00E33E60 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4142353D85F00E33E60 /* Utilities.m */; };
 		33FFF4182353E3DA00E33E60 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */; };
 		33FFF41A2354487300E33E60 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4192354487300E33E60 /* NetworkManagerTests.swift */; };
+		33FFF41C2354556F00E33E60 /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 33FFF41B2354556E00E33E60 /* Screenshots */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		33FFF4162353D87600E33E60 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
 		33FFF4192354487300E33E60 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		33FFF41B2354556E00E33E60 /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Screenshots; path = ../../Screenshots; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		33FFF3EA2352D0C100E33E60 /* SchoolApp */ = {
 			isa = PBXGroup;
 			children = (
+				33FFF41B2354556E00E33E60 /* Screenshots */,
 				33FFF3EB2352D0C100E33E60 /* AppDelegate.swift */,
 				33FFF3ED2352D0C100E33E60 /* SchoolListViewController.swift */,
 				33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */,
@@ -200,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FFF41C2354556F00E33E60 /* Screenshots in Resources */,
 				33FFF3F62352D0C200E33E60 /* LaunchScreen.storyboard in Resources */,
 				33FFF3F32352D0C200E33E60 /* Assets.xcassets in Resources */,
 				33FFF3F12352D0C100E33E60 /* Main.storyboard in Resources */,
