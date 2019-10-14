@@ -13,7 +13,7 @@ class SchoolListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var alertController: UIAlertController?
+    var alertController: UIAlertController? //To display "Fetching"
     var isAnimating = false
     
     var viewModel: SchoolListViewModel?
@@ -34,6 +34,8 @@ class SchoolListViewController: UIViewController {
     func startAnimation(){
         if (self.isAnimating == false){
             self.isAnimating = true
+            
+            //Utilties is the Objective - C class. Which creates a Generic Alert for now.
             self.alertController = Utilities.getAlertController("Fetching Schools…")
             present(self.alertController!, animated: true, completion: nil)
         }
@@ -73,12 +75,13 @@ class SchoolListViewController: UIViewController {
         }
     }
     
+    //Navigate to the school address, by clicking "Navigate" button.
     @objc func navigateToAddress(_ sender: UIButton){
         
         let indexPath = IndexPath.init(row: sender.tag, section: 0)
         let selectedSchool = viewModel?.data(forRowAt: indexPath)
         
-        if let schoolCoordinate = self.getCoordinates(selectedSchool?.location){
+        if let schoolCoordinate = self.fetchCoordinates(selectedSchool?.location){
             let coordinate = CLLocationCoordinate2DMake(schoolCoordinate.latitude, schoolCoordinate.longitude)
             let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
             
@@ -90,7 +93,7 @@ class SchoolListViewController: UIViewController {
         }
     }
     
-    func getCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
+    func fetchCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
         if let schoolAddress = location{
             let coordinateString = schoolAddress.slice(from: "(", to: ")")
             let coordinates = coordinateString?.components(separatedBy: ",")

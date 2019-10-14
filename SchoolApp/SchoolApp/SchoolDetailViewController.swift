@@ -64,7 +64,7 @@ class SchoolDetailViewController: UIViewController {
         
         let schoolAnnotation = MKPointAnnotation()
 
-        if let schoolCoordinate = self.getCoordinates(location){
+        if let schoolCoordinate = self.fetchCoordinates(location){
             schoolAnnotation.coordinate = schoolCoordinate
             self.mapView.addAnnotation(schoolAnnotation)
             let span = MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
@@ -74,7 +74,7 @@ class SchoolDetailViewController: UIViewController {
         }
     }
 
-    func getCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
+    func fetchCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
         if let schoolAddress = location{
             let coordinateString = schoolAddress.slice(from: "(", to: ")")
             let coordinates = coordinateString?.components(separatedBy: ",")
