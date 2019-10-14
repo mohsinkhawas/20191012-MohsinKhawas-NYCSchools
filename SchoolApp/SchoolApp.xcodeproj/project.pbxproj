@@ -12,13 +12,13 @@
 		33FFF3F12352D0C100E33E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33FFF3EF2352D0C100E33E60 /* Main.storyboard */; };
 		33FFF3F32352D0C200E33E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33FFF3F22352D0C200E33E60 /* Assets.xcassets */; };
 		33FFF3F62352D0C200E33E60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33FFF3F42352D0C200E33E60 /* LaunchScreen.storyboard */; };
-		33FFF4012352D0C200E33E60 /* SchoolAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4002352D0C200E33E60 /* SchoolAppTests.swift */; };
 		33FFF40C2352FCB900E33E60 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF40B2352FCB900E33E60 /* NetworkManager.swift */; };
 		33FFF40E2352FD6000E33E60 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF40D2352FD6000E33E60 /* School.swift */; };
 		33FFF4102352FEB600E33E60 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF40F2352FEB600E33E60 /* SchoolTableViewCell.swift */; };
 		33FFF4122352FF1600E33E60 /* SchoolListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4112352FF1600E33E60 /* SchoolListViewModel.swift */; };
 		33FFF4152353D85F00E33E60 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4142353D85F00E33E60 /* Utilities.m */; };
 		33FFF4182353E3DA00E33E60 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */; };
+		33FFF41A2354487300E33E60 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFF4192354487300E33E60 /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		33FFF3F52352D0C200E33E60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33FFF3F72352D0C200E33E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33FFF3FC2352D0C200E33E60 /* SchoolAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		33FFF4002352D0C200E33E60 /* SchoolAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolAppTests.swift; sourceTree = "<group>"; };
 		33FFF4022352D0C200E33E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33FFF40B2352FCB900E33E60 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		33FFF40D2352FD6000E33E60 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		33FFF4142353D85F00E33E60 /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		33FFF4162353D87600E33E60 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
+		33FFF4192354487300E33E60 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 		33FFF3FF2352D0C200E33E60 /* SchoolAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				33FFF4002352D0C200E33E60 /* SchoolAppTests.swift */,
+				33FFF4192354487300E33E60 /* NetworkManagerTests.swift */,
 				33FFF4022352D0C200E33E60 /* Info.plist */,
 			);
 			path = SchoolAppTests;
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33FFF4012352D0C200E33E60 /* SchoolAppTests.swift in Sources */,
+				33FFF41A2354487300E33E60 /* NetworkManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
