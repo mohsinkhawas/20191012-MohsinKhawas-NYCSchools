@@ -282,6 +282,7 @@
                         <outlet property="cityLabel" destination="U7d-73-OOM" id="b8s-PR-4xb"/>
                         <outlet property="emailLabel" destination="V9g-HF-DOK" id="oRf-CR-Ctl"/>
                         <outlet property="faxNumberLabel" destination="1qb-8d-jww" id="qSQ-pG-7yi"/>
+                        <outlet property="mapView" destination="woz-6T-pNz" id="Dsp-0v-Yth"/>
                         <outlet property="mathSATScoreLabel" destination="T1B-dl-CuT" id="xWd-eQ-Qvj"/>
                         <outlet property="phoneNumberLabel" destination="FlO-MX-WRM" id="1bR-m0-qou"/>
                         <outlet property="readingSATScoreLabel" destination="dF2-UO-pv5" id="318-3M-ALm"/>

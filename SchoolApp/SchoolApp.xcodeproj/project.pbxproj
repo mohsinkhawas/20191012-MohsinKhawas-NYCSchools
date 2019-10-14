@@ -94,17 +94,17 @@
 				33FFF3EB2352D0C100E33E60 /* AppDelegate.swift */,
 				33FFF3ED2352D0C100E33E60 /* SchoolListViewController.swift */,
 				33FFF4172353E3DA00E33E60 /* SchoolDetailViewController.swift */,
-				33FFF4162353D87600E33E60 /* Utilities.h */,
-				33FFF4142353D85F00E33E60 /* Utilities.m */,
 				33FFF4112352FF1600E33E60 /* SchoolListViewModel.swift */,
 				33FFF40F2352FEB600E33E60 /* SchoolTableViewCell.swift */,
 				33FFF40B2352FCB900E33E60 /* NetworkManager.swift */,
 				33FFF40D2352FD6000E33E60 /* School.swift */,
+				33FFF4162353D87600E33E60 /* Utilities.h */,
+				33FFF4142353D85F00E33E60 /* Utilities.m */,
+				33FFF4132353D85E00E33E60 /* SchoolApp-Bridging-Header.h */,
 				33FFF3EF2352D0C100E33E60 /* Main.storyboard */,
 				33FFF3F22352D0C200E33E60 /* Assets.xcassets */,
 				33FFF3F42352D0C200E33E60 /* LaunchScreen.storyboard */,
 				33FFF3F72352D0C200E33E60 /* Info.plist */,
-				33FFF4132353D85E00E33E60 /* SchoolApp-Bridging-Header.h */,
 			);
 			path = SchoolApp;
 			sourceTree = "<group>";

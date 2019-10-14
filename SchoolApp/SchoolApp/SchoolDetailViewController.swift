@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SchoolDetailViewController: UIViewController {
     
@@ -21,6 +22,9 @@ class SchoolDetailViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var faxNumberLabel: UILabel!
+    
+    @IBOutlet weak var mapView: MKMapView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +46,6 @@ class SchoolDetailViewController: UIViewController {
             mathSATScoreLabel.text = "SAT Average Maths Score - " + mathsScore
         }
         
-        
         addressLineLabel.text = school.primary_address_line_1
         
         if let city = school.city, let code = school.state_code, let zip = school.zip{
@@ -53,6 +56,35 @@ class SchoolDetailViewController: UIViewController {
         phoneNumberLabel.text = school.phone_number
         emailLabel.text = school.school_email
         faxNumberLabel.text = school.fax_number
+        
+        self.setLocation(school.location!)
+    }
+    
+    func setLocation(_ location: String) {
+        
+        let schoolAnnotation = MKPointAnnotation()
+
+        if let schoolCoordinate = self.getCoordinates(location){
+            schoolAnnotation.coordinate = schoolCoordinate
+            self.mapView.addAnnotation(schoolAnnotation)
+            let span = MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
+            let region = MKCoordinateRegion(center: schoolAnnotation.coordinate, span: span)
+            let adjustRegion = self.mapView.regionThatFits(region)
+            self.mapView.setRegion(adjustRegion, animated:true)
+        }
+    }
+
+    func getCoordinates(_ location: String?) -> CLLocationCoordinate2D?{
+        if let schoolAddress = location{
+            let coordinateString = schoolAddress.slice(from: "(", to: ")")
+            let coordinates = coordinateString?.components(separatedBy: ",")
+            if let coordinateArray = coordinates{
+                let latitude = (coordinateArray[0] as NSString).doubleValue
+                let longitude = (coordinateArray[1] as NSString).doubleValue
+                return CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+            }
+        }
+        return nil
     }
 }
 

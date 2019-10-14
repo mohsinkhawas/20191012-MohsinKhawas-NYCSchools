@@ -34,12 +34,7 @@ class SchoolListViewController: UIViewController {
     func startAnimation(){
         if (self.isAnimating == false){
             self.isAnimating = true
-            self.alertController = UIAlertController(title: nil, message: "Fetching Schools...", preferredStyle: .alert)
-            
-            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-            loadingIndicator.startAnimating();
-            
-            self.alertController?.view.addSubview(loadingIndicator)
+            self.alertController = Utilities.getAlertController("Fetching Schools…")
             present(self.alertController!, animated: true, completion: nil)
         }
     }
@@ -83,8 +78,8 @@ class SchoolListViewController: UIViewController {
         let indexPath = IndexPath.init(row: sender.tag, section: 0)
         let selectedSchool = viewModel?.data(forRowAt: indexPath)
         
-        if let highSchoolCoordinate = self.getCoordinates(selectedSchool?.location){
-            let coordinate = CLLocationCoordinate2DMake(highSchoolCoordinate.latitude, highSchoolCoordinate.longitude)
+        if let schoolCoordinate = self.getCoordinates(selectedSchool?.location){
+            let coordinate = CLLocationCoordinate2DMake(schoolCoordinate.latitude, schoolCoordinate.longitude)
             let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
             
             if let name = selectedSchool?.school_name{

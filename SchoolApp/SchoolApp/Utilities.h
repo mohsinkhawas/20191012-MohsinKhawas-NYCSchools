@@ -11,3 +11,14 @@
 
 
 #endif /* Utilities_h */
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+
+@interface Utilities : NSObject {
+}
+
++ (UIAlertController *)getAlertController:(NSString *)message;
+@end
+
