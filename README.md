@@ -3,9 +3,6 @@
 # SchoolApp (Gave the app a name called SchoolApp)
 > SchoolApp is an iOS App for NYC School Data, where the app fetches a list of Schools and their SAT Scores.
 
-##Note:
-Thanks for the opportunity for working on this sample App, had fun doing this.
-
 ## Features
 
 - Schools List View:
@@ -20,9 +17,6 @@ Thanks for the opportunity for working on this sample App, had fun doing this.
 - Detail View:
   Shows the school SAT Scores and map Area.
   Shows the school address, contact information and more.
-
-- Objective C:
-  Have created an Objective C class for Utilities, to show case importing it into Swift project.
 
 - Codable Protocol:
   Have used the Codable protocol for JSON Serialization. To mainly showcase the use of Swift. 
